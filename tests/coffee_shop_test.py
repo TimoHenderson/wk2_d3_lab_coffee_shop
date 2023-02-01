@@ -7,10 +7,10 @@ from src.customer import Customer
 class TestCoffeeShop(unittest.TestCase):
     def setUp(self):
         self.drinks = [
-            Drink("Mocha", 5.00),
-            Drink("Latte", 4.50),
-            Drink("Hot Chocolate", 3.60),
-            Drink("Tea", 2.00),
+            Drink("Mocha", 5.00, 3),
+            Drink("Latte", 4.50, 2),
+            Drink("Hot Chocolate", 3.60, 0),
+            Drink("Tea", 2.00, 1),
         ]
         self.customer = Customer("Fred", 56.00, 57)
         self.customer_2 = Customer("Barney", 10.00, 13)
