@@ -11,7 +11,14 @@ class CoffeeShop:
         if customer.age >= 16 and customer.energy_level <= 6:
             customer.spend_money(drink.price)
             self.increase_till(drink.price)
+            self.reduce_stock_count(drink)
             customer.increase_energy_level(drink.caffeine_level)
+
+    def reduce_stock_count(self, drink):
+        for my_drink in self.drinks:
+            if my_drink["drink"].name == drink.name:
+                my_drink["stock"] -= 1
+                return
 
     def sell_food(self, food, customer):
         customer.spend_money(food.price)

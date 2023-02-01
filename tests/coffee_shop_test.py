@@ -8,10 +8,10 @@ from src.food import Food
 class TestCoffeeShop(unittest.TestCase):
     def setUp(self):
         self.drinks = [
-            Drink("Mocha", 5.00, 3),
-            Drink("Latte", 4.50, 2),
-            Drink("Hot Chocolate", 3.60, 0),
-            Drink("Tea", 2.00, 1),
+            {"drink": Drink("Mocha", 5.00, 3), "stock": 5},
+            {"drink": Drink("Latte", 4.50, 2), "stock": 2},
+            {"drink": Drink("Hot Chocolate", 3.60, 0), "stock": 7},
+            {"drink": Drink("Tea", 2.00, 1), "stock": 10},
         ]
         self.customer = Customer("Fred", 56.00, 57, 1)
         self.customer_2 = Customer("Barney", 10.00, 13, 4)
@@ -31,13 +31,13 @@ class TestCoffeeShop(unittest.TestCase):
         self.assertEqual(self.drinks, self.coffee_shop.drinks)
 
     def test_sell_drink__overage(self):
-        drink = self.drinks[1]
+        drink = Drink("Latte", 4.50, 2)
         self.coffee_shop.sell_drink(drink, self.customer)
         self.assertEqual(104.50, self.coffee_shop.till)
         self.assertEqual(51.50, self.customer.wallet)
 
     def test_sell_drink__underage(self):
-        drink = self.drinks[1]
+        drink = Drink("Latte", 4.50, 2)
         self.coffee_shop.sell_drink(drink, self.customer_2)
         self.assertEqual(100.00, self.coffee_shop.till)
         self.assertEqual(10.00, self.customer_2.wallet)
@@ -65,3 +65,9 @@ class TestCoffeeShop(unittest.TestCase):
         customer = Customer("Eric", 35.00, 27, 2)
         self.coffee_shop.sell_food(food, customer)
         self.assertEqual(0, customer.energy_level)
+
+    def test_sell_drink__change_stock(self):
+        customer = Customer("Fred", 56.00, 57, 1)
+        drink = Drink("Mocha", 5.00, 3)
+        self.coffee_shop.sell_drink(drink, customer)
+        self.assertEqual(4, self.coffee_shop.drinks[0]["stock"])
