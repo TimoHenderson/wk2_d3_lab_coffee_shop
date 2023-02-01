@@ -7,3 +7,6 @@ class Customer:
 
     def spend_money(self, amount):
         self.wallet -= amount
+
+    def increase_energy_level(self, amount):
+        self.energy_level += amount

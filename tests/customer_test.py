@@ -21,3 +21,7 @@ class TestCustomer(unittest.TestCase):
 
     def test_has_energy_level(self):
         self.assertEqual(1, self.customer.energy_level)
+
+    def test_increase_energy_level(self):
+        self.customer.increase_energy_level(4)
+        self.assertEqual(5, self.customer.energy_level)
