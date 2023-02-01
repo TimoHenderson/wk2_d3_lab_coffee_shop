@@ -24,3 +24,9 @@ class CoffeeShop:
         customer.spend_money(food.price)
         self.increase_till(food.price)
         customer.decrease_energy_level(food.rejuvenation_level)
+
+    def stock_value(self):
+        stock_value = 0
+        for drink in self.drinks:
+            stock_value += drink["stock"] * drink["drink"].price
+        return stock_value

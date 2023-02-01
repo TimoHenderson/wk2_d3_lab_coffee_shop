@@ -71,3 +71,7 @@ class TestCoffeeShop(unittest.TestCase):
         drink = Drink("Mocha", 5.00, 3)
         self.coffee_shop.sell_drink(drink, customer)
         self.assertEqual(4, self.coffee_shop.drinks[0]["stock"])
+
+    def test_stock_value(self):
+        stock_value = self.coffee_shop.stock_value()
+        self.assertEqual(79.20, stock_value)
