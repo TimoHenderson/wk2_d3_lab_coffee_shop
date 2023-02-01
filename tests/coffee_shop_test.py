@@ -40,3 +40,9 @@ class TestCoffeeShop(unittest.TestCase):
         self.coffee_shop.sell_drink(drink, self.customer_2)
         self.assertEqual(100.00, self.coffee_shop.till)
         self.assertEqual(10.00, self.customer_2.wallet)
+
+    def test_sell_drink__overage_increase_energy_levels(self):
+        drink = Drink("Mocha", 5.00, 3)
+        customer = Customer("Eric", 35.00, 27, 4)
+        self.coffee_shop.sell_drink(drink, customer)
+        self.assertEqual(7, customer.energy_level)

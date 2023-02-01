@@ -11,3 +11,4 @@ class CoffeeShop:
         if customer.age >= 16:
             customer.spend_money(drink.price)
             self.increase_till(drink.price)
+            customer.increase_energy_level(drink.caffeine_level)
