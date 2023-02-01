@@ -8,7 +8,7 @@ class CoffeeShop:
         self.till += amount
 
     def sell_drink(self, drink, customer):
-        if customer.age >= 16:
+        if customer.age >= 16 and customer.energy_level <= 6:
             customer.spend_money(drink.price)
             self.increase_till(drink.price)
             customer.increase_energy_level(drink.caffeine_level)

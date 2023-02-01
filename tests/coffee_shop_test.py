@@ -46,3 +46,15 @@ class TestCoffeeShop(unittest.TestCase):
         customer = Customer("Eric", 35.00, 27, 4)
         self.coffee_shop.sell_drink(drink, customer)
         self.assertEqual(7, customer.energy_level)
+
+    def test_sell_drink__too_much_energy(self):
+        drink = Drink("Mocha", 5.00, 3)
+        customer = Customer("Eric", 35.00, 27, 7)
+        self.coffee_shop.sell_drink(drink, customer)
+        self.assertEqual(7, customer.energy_level)
+
+    def test_sell_drink__not_too_much_energy(self):
+        drink = Drink("Mocha", 5.00, 3)
+        customer = Customer("Eric", 35.00, 27, 2)
+        self.coffee_shop.sell_drink(drink, customer)
+        self.assertEqual(5, customer.energy_level)
