@@ -2,6 +2,7 @@ import unittest
 from src.coffee_shop import CoffeeShop
 from src.drink import Drink
 from src.customer import Customer
+from src.food import Food
 
 
 class TestCoffeeShop(unittest.TestCase):
@@ -58,3 +59,9 @@ class TestCoffeeShop(unittest.TestCase):
         customer = Customer("Eric", 35.00, 27, 2)
         self.coffee_shop.sell_drink(drink, customer)
         self.assertEqual(5, customer.energy_level)
+
+    def test_sell_food(self):
+        food = Food("Sandwich", 4.00, 2)
+        customer = Customer("Eric", 35.00, 27, 2)
+        self.coffee_shop.sell_food(food, customer)
+        self.assertEqual(0, customer.energy_level)

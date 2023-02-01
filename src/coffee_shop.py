@@ -12,3 +12,8 @@ class CoffeeShop:
             customer.spend_money(drink.price)
             self.increase_till(drink.price)
             customer.increase_energy_level(drink.caffeine_level)
+
+    def sell_food(self, food, customer):
+        customer.spend_money(food.price)
+        self.increase_till(food.price)
+        customer.decrease_energy_level(food.rejuvenation_level)
