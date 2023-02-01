@@ -13,6 +13,7 @@ class TestCoffeeShop(unittest.TestCase):
             Drink("Tea", 2.00),
         ]
         self.customer = Customer("Fred", 56.00, 57)
+        self.customer_2 = Customer("Barney", 10.00, 13)
         self.coffee_shop = CoffeeShop("The Prancing Pony", 100.00, self.drinks)
 
     def test_has_name(self):
@@ -28,8 +29,14 @@ class TestCoffeeShop(unittest.TestCase):
     def test_has_drinks(self):
         self.assertEqual(self.drinks, self.coffee_shop.drinks)
 
-    def test_sell_drink(self):
+    def test_sell_drink__overage(self):
         drink = self.drinks[1]
         self.coffee_shop.sell_drink(drink, self.customer)
         self.assertEqual(104.50, self.coffee_shop.till)
         self.assertEqual(51.50, self.customer.wallet)
+
+    def test_sell_drink__underage(self):
+        drink = self.drinks[1]
+        self.coffee_shop.sell_drink(drink, self.customer_2)
+        self.assertEqual(100.00, self.coffee_shop.till)
+        self.assertEqual(10.00, self.customer_2.wallet)
