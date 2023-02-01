@@ -4,7 +4,7 @@ from src.customer import Customer
 
 class TestCustomer(unittest.TestCase):
     def setUp(self):
-        self.customer = Customer("Fred", 56.00)
+        self.customer = Customer("Fred", 56.00, 57)
 
     def test_has_name(self):
         self.assertEqual("Fred", self.customer.name)
@@ -15,3 +15,6 @@ class TestCustomer(unittest.TestCase):
     def test_spend_money(self):
         self.customer.spend_money(5.00)
         self.assertEqual(51.00, self.customer.wallet)
+
+    def test_has_age(self):
+        self.assertEqual(57, self.customer.age)

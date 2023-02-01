@@ -12,7 +12,7 @@ class TestCoffeeShop(unittest.TestCase):
             Drink("Hot Chocolate", 3.60),
             Drink("Tea", 2.00),
         ]
-        self.customer = Customer("Fred", 56.00)
+        self.customer = Customer("Fred", 56.00, 57)
         self.coffee_shop = CoffeeShop("The Prancing Pony", 100.00, self.drinks)
 
     def test_has_name(self):
