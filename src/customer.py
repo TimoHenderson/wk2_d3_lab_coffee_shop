@@ -10,3 +10,8 @@ class Customer:
 
     def increase_energy_level(self, amount):
         self.energy_level += amount
+
+    def decrease_energy_level(self, amount):
+        self.energy_level -= amount
+        if self.energy_level < 0:
+            self.energy_level = 0

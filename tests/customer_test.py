@@ -25,3 +25,13 @@ class TestCustomer(unittest.TestCase):
     def test_increase_energy_level(self):
         self.customer.increase_energy_level(4)
         self.assertEqual(5, self.customer.energy_level)
+
+    def test_decrease_energy_level__above_zero(self):
+        customer = Customer("Bob", 25.00, 38, 6)
+        customer.decrease_energy_level(4)
+        self.assertEqual(2, customer.energy_level)
+
+    def test_decrease_energy_level__below_zero(self):
+        customer = Customer("Bob", 25.00, 38, 2)
+        customer.decrease_energy_level(4)
+        self.assertEqual(0, customer.energy_level)
